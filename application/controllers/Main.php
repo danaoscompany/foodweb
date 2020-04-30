@@ -74,7 +74,7 @@ class Main extends CI_Controller {
         );
         echo json_encode($response);
       }
-    } else if ($role == 0) {
+    } else if ($role == 1) {
       $sellers = $this->db->get_where('sellers', array(
         'email' => $email
       ))->result_array();
