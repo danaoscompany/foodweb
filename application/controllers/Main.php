@@ -42,7 +42,7 @@ class Main extends CI_Controller {
         if (sizeof($drivers) > 0) {
           $driver = $drivers->row_array();
           $driver['role'] = 2;
-          echo json_encode($driver;
+          echo json_encode($driver);
         } else {
           echo -1;
         }
