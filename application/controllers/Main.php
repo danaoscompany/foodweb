@@ -65,6 +65,14 @@ class Main extends CI_Controller {
           'email' => $email,
           'password' => $password
         ));
+        $buyer = $this->db->get_where('buyers', array(
+          'id' => intval($this->db->insert_id())
+        ))->row_array();
+        $response = array(
+          'response_code' => 1,
+          'data' => $buyer
+        );
+        echo json_encode($response);
       }
     } else if ($role == 0) {
       $sellers = $this->db->get_where('sellers', array(
@@ -77,6 +85,14 @@ class Main extends CI_Controller {
           'email' => $email,
           'password' => $password
         ));
+        $seller = $this->db->get_where('sellers', array(
+          'id' => intval($this->db->insert_id())
+        ))->row_array();
+        $response = array(
+          'response_code' => 1,
+          'data' => $seller
+        );
+        echo json_encode($response);
       }
     } else if ($role == 2) {
       $drivers = $this->db->get_where('drivers', array(
@@ -89,6 +105,14 @@ class Main extends CI_Controller {
           'email' => $email,
           'password' => $password
         ));
+        $driver = $this->db->get_where('drivers', array(
+          'id' => intval($this->db->insert_id())
+        ))->row_array();
+        $response = array(
+          'response_code' => 1,
+          'data' => $driver
+        );
+        echo json_encode($response);
       }
     }
   }
