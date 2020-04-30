@@ -49,4 +49,47 @@ class Main extends CI_Controller {
       }
     }
   }
+  
+  public function signup() {
+    $email = $this->input->post('email');
+    $password = $this->input->post('password');
+    $role = intval($this->input->post('role'));
+    if ($role == 0) {
+      $buyers = $this->db->get_where('buyers', array(
+        'email' => $email
+      ))->result_array();
+      if (sizeof($buyers) > 0) {
+        echo -1;
+      } else {
+        $this->db->insert('buyers', array(
+          'email' => $email,
+          'password' => $password
+        ));
+      }
+    } else if ($role == 0) {
+      $sellers = $this->db->get_where('sellers', array(
+        'email' => $email
+      ))->result_array();
+      if (sizeof($sellers) > 0) {
+        echo -1;
+      } else {
+        $this->db->insert('sellers', array(
+          'email' => $email,
+          'password' => $password
+        ));
+      }
+    } else if ($role == 2) {
+      $drivers = $this->db->get_where('drivers', array(
+        'email' => $email
+      ))->result_array();
+      if (sizeof($drivers) > 0) {
+        echo -1;
+      } else {
+        $this->db->insert('drivers', array(
+          'email' => $email,
+          'password' => $password
+        ));
+      }
+    }
+  }
 }
