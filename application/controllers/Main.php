@@ -22,7 +22,7 @@ class Main extends CI_Controller {
       'password' => $password
     ))->result_array();
     if (sizeof($users) > 0) {
-      $user = $users->row_array();
+      $user = $users[0];
       $user['role'] = 0;
       echo json_encode($user);
     } else {
@@ -31,7 +31,7 @@ class Main extends CI_Controller {
       'password' => $password
     ))->result_array();
       if (sizeof($sellers) > 0) {
-        $seller = $sellers->row_array();
+        $seller = $sellers[0];
         $seller['role'] = 1;
         echo json_encode($seller);
       } else {
@@ -40,7 +40,7 @@ class Main extends CI_Controller {
           'password' => $password
         ))->result_array();
         if (sizeof($drivers) > 0) {
-          $driver = $drivers->row_array();
+          $driver = $drivers[0];
           $driver['role'] = 2;
           echo json_encode($driver);
         } else {
